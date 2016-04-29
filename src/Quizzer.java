@@ -5,7 +5,7 @@ public class Quizzer {
 	static 	ArrayList <Questions> qlist = new ArrayList<Questions>(10);
 	public static void main(String[] args)
 	{
-		
+		//readthis mother****
 	}
 	public void addFormat()
 	{
