@@ -1,31 +1,32 @@
-import java.util.ArrayList;
 import java.util.Scanner;
-public class Quizzer {
-	public Scanner userInput = new Scanner(System.in);
-	static 	ArrayList <Questions> qlist = new ArrayList<Questions>(10);
-	public static void main(String[] args)
+public class Quizzer
 	{
-		//readthis mother****
-	}
-	public void addFormat()
-	{
-		for(int i = 0; i < qlist.size(); i ++)
-		{
-			public void setQuestion(String qline)
+		static Scanner userInput = new Scanner(System.in);
+		public static void main(String[] args)
 			{
-				int randomNum1 = (int) (Math.random()*15);
-				int randomNum2 = (int) (Math.random()*20);
-				int correctAnswer = randomNum2%randomNum1;
-				System.out.println("When you're given"+randomNum2+"%"+randomNum1+". What is the remainder");
-				int inputedAnswer = userInput.nextInt();
-				if(inputedAnswer==correctAnswer)
-				{
-					System.out.println("That's right!");
-				}
-				else
-				{
-					System.out.println("That's wrong! The correct answer was "+correctAnswer);
-				}
+				System.out.println("Generate Number of Questions: ");
+				int num = userInput.nextInt();
+				int score = 0;
+				for (int i = 0; i < num; i++)
+					{
+						boolean right = quiz();
+						if (right)
+							{
+								score++;
+							}
+					}
+				System.out.println("Your Score is: "+score);
 			}
+		public static boolean quiz()
+		{
+			int first = (int)(Math.random()*20)+1;
+			int second = (int)(Math.random()*first)-3;
+			second = Math.max(second, 1);
+			int mod = (first % second);
+			System.out.println("What is "+ first + " mod "+ second+ "?");
+			int answer = userInput.nextInt();
+			boolean right = answer==mod;
+			return right;
 		}
 	}
+
